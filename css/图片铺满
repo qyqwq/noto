@@ -1,0 +1,106 @@
+利用背景图片效果（填满容器不拉伸）
+
+Vue：
+
+<div class="photo-bg" id="head-portrait" :style="{backgroundImage: 'url(' + vo.headPortrait + ')' }" ></div>
+
+.photo-bg{
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+原文链接：https://blog.csdn.net/ymumi/article/details/80619195
+
+
+居中显示
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+未知大小图片同比例缩放后水平和垂直方向上居中
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    *{
+				padding: 0;
+				margin: 0;
+			}
+		    html{
+				min-height: 101%;
+			}
+		    body{
+				font-family: verdana,arial,tahoma;
+				font-size: 12px;
+				color: #333;
+			}
+		    div{
+				margin: 0 auto;
+			}
+		    ul,ol,li{
+				list-style: none;
+			}
+		    a{
+				text-decoration: none;
+				word-wrap: break-word;
+			}
+		    a:hover{
+				text-decoration: underline;
+			}
+		    img{
+				border:0;
+			}
+		    p{
+				line-height: 26px;
+			}
+		    /*容器*/
+		    .middle{
+			   	font-size: 0;
+			   	width: 880px;
+			   	height: 218px;
+			   	margin: 10px auto;
+			   	border: solid 4px #999;
+			}
+		    .middle li{
+			   	font-size: 12px;
+			   	height: 200px;
+			   	background-color: #f5f5f5;
+			   	display: inline-block;
+			   	*display: inline/*IE7*/;
+			   	margin: 1%;
+			  	width: 23%;
+			   	*zoom: 1/*IE7*/;
+			}
+		    /*未知大小的图片在已知容器中的垂直居中和水平居中*/
+		    .middle li img{
+			  	margin-top: expression(100-this.height/2);
+			  	max-width: 200px;
+				max-height: 200px;
+			}
+		    .middle li a{
+			  	text-align: center;
+			  	vertical-align: middle;
+			  	display: table-cell;
+			  	width: 200px;
+			  	height: 200px;
+			  	overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+	    <ul class="middle in-box">
+	    	<li><a href="javascript:void(0)"><img src="img/cool.png"/></a></li>
+	    	<li><a href="javascript:void(0)"><img src="img/130-81.png"/></a></li>
+	    	<li><a href="javascript:void(0)"><img src="img/banner/j2.jpg"/></a></li>
+	    	<li><a href="javascript:void(0)"><img src="games/image/egg_1.png"/></a></li>
+	    </ul>
+	</body>
+
+————————————————
+版权声明：本文为CSDN博主「H小志」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/xiaozhi_2016/article/details/52650152

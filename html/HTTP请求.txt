@@ -1,0 +1,124 @@
+//每个头域由一个域名，冒号（:）和域值三部分组成。
+//域名是大小写无关的，域值前可以添加任何数量的空格符，
+//头域可以被扩展为多行，在每行开始处，使用至少一个空格或制表符。
+HTTP 请求 Request
+    Transport 头域
+        Connection:  (keep-alive | HTTP 1.1) / close  
+        //表示是否需要持久连接。
+
+        Host: 
+        //请求地址的根目录
+
+    Client 头域
+        Accept: application/json, text/javascript, */*; q=0.01
+        //浏览器可以接受的媒体类型（MIME类型）
+        //q表示接收权重，0 < q < 1
+        //q 值越大，请求越倾向于获得其“;”之前的类型表示的内容，
+        //若被赋值为0，则用于提醒服务器哪些是浏览器不接受的内容类型。
+
+        Accept-Encoding: gzip, deflate
+        //浏览器申明自己接收的编码方法，通常指定压缩方法，
+        //是否支持压缩，支持什么压缩方法（gzip，deflate），
+        //该写法可节省带宽，缩短下载时间
+
+        Accept-Language：zh-cn
+        //浏览器申明自己接收的语言。 
+
+        User-Agent: 
+        //告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本.
+
+        Accept-Charset：
+        //浏览器申明自己接收的字符集，
+        //缺省时任何字符集都能接受
+
+        WWW-Authenticate:
+        //basic验证需要的请求头
+
+    Cookie/Login 头域
+        Cookie:
+
+    Entity 头域
+        Content-Length: 
+        //发送给HTTP服务器数据的长度。即请求消息正文的长度
+
+        Content-Type:application/json; charset=utf-8
+
+    Miscellaneous 头域
+        Referer:
+        //提供了Request的上下文信息的服务器，告诉服务器我是从哪个链接过来的，
+
+    Cache 头域
+        If-Modified-Since：
+        //把浏览器端缓存页面的最后修改时间发送到服务器去，
+        //如果时间一致，那么返回304，客户端就直接使用本地缓存文件。
+        //如果时间不一致，就会返回200和新的文件内容。
+
+        If-None-Match：
+        //If-None-Match和ETag一起工作，工作原理是在HTTP Response中添加ETag信息。
+        //当用户再次请求该资源时，将在HTTP Request 中加入If-None-Match信息(ETag的值)。
+        //如果服务器验证资源的ETag没有改变（该资源没有更新），
+        //将返回一个304状态告诉客户端使用本地缓存文件。否则将返回200状态和新的资源和Etag. 
+
+        Pragma：no-cache
+        // 防止页面被缓存
+
+        Cache-Control：
+        //这个用来指定Response-Request遵循的缓存机制。各个指令含义如下
+        //Cache-Control:Public    可以被任何缓存所缓存（）
+        //Cache-Control:Private     内容只缓存到私有缓存中
+        //Cache-Control:no-cache  所有内容都不会被缓存
+
+
+HTTP 响应 Response
+    状态行
+        常见状态代码、状态描述、说明：
+        200 OK      //客户端请求成功
+        400 Bad Request  //客户端请求有语法错误，不能被服务器所理解
+        401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 
+        403 Forbidden  //服务器收到请求，但是拒绝提供服务
+        404 Not Found  //请求资源不存在，eg：输入了错误的URL
+        500 Internal Server Error //服务器发生不可预期的错误
+        503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后可能恢复正常
+
+    消息报头
+        Cache 头域
+            Date: 
+            //生成消息的具体时间和日期，即当前的GMT时间。
+
+            Expires:
+            //浏览器会在指定过期时间内使用本地缓存，指明应该在什么时候认为文档已经过期，从而不再缓存它。
+
+        Cookie/Login 头域
+            P3P:
+            //用于跨域设置Cookie, 这样可以解决iframe跨域访问cookie的问题
+
+            Set-Cookie:
+
+        Entity 实体头域
+            ETag：
+            // 和If-None-Match 配合使用
+            
+            Last-Modified：
+            //用于指示资源的最后修改日期和时间。
+
+            Content-Type：
+            //WEB服务器告诉浏览器自己响应的对象的类型和字符集,
+
+            Content-Length：
+            //指明实体正文的长度，以字节方式存储的十进制数字来表示
+
+            Content-Encoding：
+            //文档的编码（Encode）方法。一般是压缩方式
+            
+            Content-Language：
+            //WEB服务器告诉浏览器自己响应的对象的语言者
+        
+        Miscellaneous 头域
+            Server：
+            //指明HTTP服务器的软件信息
+
+            X-Powered-By：
+            //表示网站是用什么技术开发的
+
+    响应正文
+        响应正文就是服务器返回的资源的内容，响应头和正文之间也必须用空行分隔

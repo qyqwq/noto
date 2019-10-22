@@ -1,0 +1,30 @@
+﻿
+https://docs.microsoft.com/zh-cn/aspnet/core/tutorials/razor-pages/?view=aspnetcore-2.2
+关于基础知识刷一遍
+Razor模板框架了解下
+数据验证对接Razor模板了解下
+控制层的数据输入验证方面学习下
+C#一些基础语法高阶语法 语法糖了解下
+https://docs.microsoft.com/zh-cn/dotnet/csharp/tutorials/working-with-linq
+LinQ【重要】
+https://docs.microsoft.com/zh-cn/ef/core/
+Entity Framework Core【重要】
+关于数据模型对接EF生成数据库【重点】
+
+QQ群机器人 酷Q
+
+
+cli mvvm脚架 js严格模式
+$.npm包管理 
+js-sheet
+swipe 幻灯片
+ dataclone
+
+
+
+分组页面
+    表格，添加页面，编辑，删除
+
+
+
+
