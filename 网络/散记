@@ -1,0 +1,19 @@
+gRPC https://www.jianshu.com/p/9c947d98e192
+
+
+RESTful API https://www.jianshu.com/p/dbee5199cf23
+是http协议，规定请求格式
+
+http协议 https://blog.csdn.net/use_admin/article/details/82898681
+http2.0 主要对性能进行优化 - 二进制分帧层 https://blog.csdn.net/qq_35718410/article/details/87162013
+
+Google Protobuf 进程间通信规范 同json,xml https://www.jianshu.com/p/b723053a86a6
+
+FLV（Flash Video）流媒体格式 .flv https://blog.csdn.net/codysnow/article/details/50435782
+
+理解RTMP、HttpFlv和HLS的正确姿势  https://www.jianshu.com/p/32417d8ee5b6 √ 好
+                              | -https://blog.csdn.net/caoshangpa/article/details/79543916
+flv 协议解析 https://blog.csdn.net/codysnow/article/details/50435782
+
+Protobuf详解 https://www.jianshu.com/p/a24c88c0526a
+
