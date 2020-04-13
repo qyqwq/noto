@@ -1,0 +1,10 @@
+数据展示  DataGridView 控件
+
+Windows 窗体还支持使用 UserControl 类创建自己的自定义控件。
+
+创建自己的自定义用户界面元素，System.Drawing 命名空间包含各种类
+
+有时，可能需要从屏幕坐标映射到客户端坐标。 您可以轻松地实现此目的通过使用PointToClient并PointToScreen方法中提供Control类。 例如，MousePosition属性的Control屏幕坐标中报告但你可能想要将它们转换成工作区坐标中。
+
+是CefSharp控件（需要从Nuget上下载Nuget包），基于Chrome内核，
+

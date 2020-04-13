@@ -1,0 +1,22 @@
+子图片居中不拉伸，超出隐藏
+  
+    .image-grandfather{
+        height: 500px;
+        min-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .image-parents {
+        height: inherit;
+        min-height: inherit;
+        position: absolute;
+    }
+
+    .image-fill {
+        display: block;
+        height: 100%;
+        max-width: initial;
+        box-sizing: initial;
+    }

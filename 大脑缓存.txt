@@ -1,31 +1,25 @@
-﻿
-https://docs.microsoft.com/zh-cn/aspnet/core/tutorials/razor-pages/?view=aspnetcore-2.2
-关于基础知识刷一遍
-Razor模板框架了解下
-数据验证对接Razor模板了解下
-控制层的数据输入验证方面学习下
-C#一些基础语法高阶语法 语法糖了解下
-https://docs.microsoft.com/zh-cn/dotnet/csharp/tutorials/working-with-linq
-LinQ【重要】
-https://docs.microsoft.com/zh-cn/ef/core/
-Entity Framework Core【重要】
-关于数据模型对接EF生成数据库【重点】
+﻿人事模块{
+    入职登记表{
+        微信接口{
+            图片上传
+            微信拍照识别身份证
+            日期选择
+            地址选择？
+        }
+        单选弹窗
+    }
 
-QQ群机器人 酷Q
-
-
-cli mvvm脚架 js严格模式
-$.npm包管理 
-js-sheet
-swipe 幻灯片
- dataclone
-
-
-锻炼
-多方面
-文件
-网络
-
-
-
-
+}
+数据库{
+    admin 员工表
+    
+}
+Pormise{
+    choseImg(getLocalImgData){
+        wx.chooseImage({
+            success:function(){
+                getLocalImgData()
+            }
+        })
+    }
+}

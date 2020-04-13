@@ -2,7 +2,7 @@ gRPC https://www.jianshu.com/p/9c947d98e192
 
 
 RESTful API https://www.jianshu.com/p/dbee5199cf23
-是http协议，规定请求格式
+请求规范： URL定位资源，用HTTP动词（GET,POST,DELETE,put）描述操作。
 
 http协议 https://blog.csdn.net/use_admin/article/details/82898681
 http2.0 主要对性能进行优化 - 二进制分帧层 https://blog.csdn.net/qq_35718410/article/details/87162013
