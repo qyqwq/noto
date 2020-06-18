@@ -1,0 +1,71 @@
+//调用event.preventDefault()方法，默认事件行为将不再触发,但不会阻止冒泡传递
+var link = document.querySelector('#link');
+link.addEventListener('click', function (e) {
+    e.preventDefault();
+    //TODO
+}, false);
+//event.stopPropagation() 方法阻止事件向上冒泡传递，阻止任何父事件处理程序被执行。
+//stopImmediatePropagation()方法 既能阻止事件向父元素冒泡，也能阻止元素同事件类型的其它监听器被触发
+
+
+//event.currentTarget始终是监听事件者(当前执行事件的dom)，而event.target是事件的真正发出者。
+//事件代理，绑定在统一的父节点上
+/* 
+error事件，
+写在标签属性上为onerror="console.log(this)"
+如果图片加载不成功，可以在onerror里替换成其他默认图片
+
+
+ */
+
+
+
+
+
+
+<html>
+<head>
+  <script>
+    // 因 Document 结构未载入，无效
+    document.getElementById('hello').textContent = 'Hello';
+  </script>
+</head>
+<body>
+  <div id="hello"></div>
+</body>
+</html>
+
+<html>
+<head>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 当 document 结构已解析完成才会执行
+      document.getElementById('hello').textContent = 'Hello';
+    }, false);
+  </script>
+</head>
+<body>
+  <div id="hello"></div>
+</body>
+</html>
+/* load 事件在文件全部加载完成后触发 
+DOMContentLoaded 事件 在html加载后就会触发 */
+
+/* 
+
+Event Loop 事件循环 浏览器端
+
+宏任务 ：macroTask  Task
+微任务 ：microTask  Job。
+一个宏任务包含多个微任务
+{
+  宏任务包括 一个函数、网络请求、键盘事件、鼠标事件
+}
+当需要执行一个函数时，将函数加入到 宏任务队列中，等待执行
+
+{
+  微任务包括 dom修改 promise
+}
+宏任务执行结束后(函数代码执行完后 )检查微任务队列
+微任务队列执行结束后，执行下一个宏任务
+ */

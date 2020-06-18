@@ -1,0 +1,39 @@
+
+div {
+    animation-play-state: paused;/* 动画保持在突然停止的状态 */
+}
+
+
+div:hover {
+    animation: spin 1s linear infinite;
+    animation-play-state: running; /* 悬停时动画执行 */
+    
+}
+div:hover {
+    animation-name: rainbow; /* 名字 */
+    animation-duration: 1s;/* 时间 */
+    animation-timing-function: linear;  /* 时间函数 */
+    animation-delay: 1s;    /* 延时 */
+    animation-fill-mode: forwards; /* 停留在结束状态 */
+    animation-direction: normal; /* 播放顺序  reverse倒序 */
+    animation-iteration-count: 3;/* 播放次数 infinite 循环播放*/
+}
+/* chrome前缀 */
+@-webkit-keyframes xxx{
+    to{
+        transform:perspective(400px) rotateY(0deg);/* 镜像翻转 */
+    }
+}
+@keyframes rainbow {
+    0% {
+        background: #c00;
+    }
+
+    50% {
+        background: orange;
+    }
+
+    100% {
+        background: yellowgreen;
+    }
+}

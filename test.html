@@ -1,0 +1,87 @@
+<!-- <script src="jquery-3.4.1/jquery-3.4.1.js"></script> -->
+<div>div</div>
+<p class="myClass" id="content"></p>
+<span>span</span>
+<script>
+    const data = {};
+    let name = "张三";
+
+    Object.defineProperty(data,'name',{
+        get:function(){
+            console.log('触发get')
+            return name
+        },
+        set:function(newVal){
+            console.log('触发set')
+            name=newVal;
+            document.getElementById('content').innerHTML = newVal;
+        }
+    })
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+.test_wrap ul{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 10px;
+    background: #ffffff;
+}
+.test_wrap li{
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    padding-right: 0.1rem;
+    list-style-type: none;
+    padding: 0 5px;
+}
+.test_wrap a{
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 30px 0;
+    background-color: #9a6ad8;
+    -webkit-animation: proRotate 1s ease-in-out 500ms alternate none infinite;
+    animation: proRotate 1s ease-in-out 500ms alternate none infinite;
+}
+@-webkit-keyframes proRotate { 
+    0%{-webkit-transform:perspective(400px) rotateY(180deg);} 
+    100%{-webkit-transform:perspective(400px) rotateY(0deg);} 
+}
+@keyframes proRotate { 
+    0%{transform:perspective(400px) rotateY(180deg);} 
+    100%{transform:perspective(400px) rotateY(0deg);} 
+}
+</style>
+</head>
+<body>
+<div class="test_wrap">
+    <ul>
+        <li>
+            <a href="#">测试一号</a>
+        </li>
+        <li>
+            <a href="#">测试二号</a>
+        </li>
+        <li>
+            <a href="#">测试三号</a>
+        </li>
+    </ul>
+</div>
+<body>
+</html>

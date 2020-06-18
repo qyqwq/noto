@@ -1,0 +1,10 @@
+new RegExp('(' + str + ')', 'g');
+.replace(reg, '被替换的字符串')
+修饰符
+i 不区分大小写
+g 全局匹配
+m 多行匹配
+
+'str'.match(reg);
+
+/^[ ]*$/ 不全为空

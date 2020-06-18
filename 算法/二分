@@ -1,0 +1,20 @@
+//左闭右开
+function binarySearch (data, target) {
+  let [left, right] = [0, data.length]
+ 
+  while (left < right) {
+    const mid = left + (right - left >>> 1)
+    if (target < data[mid]) {
+      right = mid
+    } else {
+      left = mid + 1
+    }
+  }
+ 
+  // 此时left、right相等，随便用一个
+  let res = -1
+  if (data[right - 1] === target) {
+    res = right - 1
+  }
+  return res
+}

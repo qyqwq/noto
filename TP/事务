@@ -1,0 +1,9 @@
+TP3.2
+
+try {
+    M()->startTrans();
+    M()->commit();
+} catch (\Throwable $th) {
+    M()->rollback();
+}
+
