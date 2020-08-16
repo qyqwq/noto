@@ -1,0 +1,1 @@
+node --use_strict calc.js //通知环境默认开启严格模式

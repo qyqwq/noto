@@ -1,0 +1,2 @@
+运行者 Worker 接口是Web Workers API 的一部分，代表一个后台任务，它容易被创建并向创建者发回消息。创建一个运行者只要简单的调用Worker()构造函数，指定一个脚本，在工作线程中执行。
+https://developer.mozilla.org/zh-CN/docs/Web/API/Worker
