@@ -3,52 +3,14 @@
 <p class="myClass" id="content"></p>
 <span>span</span>
 <script>
-    //绑定
-    {
-        const data = {};
-        let name = "张三";
-        Object.defineProperty(data, 'name', {
-            get: function () {
-                console.log('触发get')
-                return name
-            },
-            set: function (newVal) {
-                console.log('触发set')
-                name = newVal;
-                document.getElementById('content').innerHTML = newVal;
+   for(i = 100336889;;i++){
+       $.ajax({
+           url:"45.113.201.36/api/ctf/5?uid="+uid,
+            type:'get',
+            success:function(data){
+                
             }
-        })
-    }
-    //nodejs Woeker
-    {
-        function Worker(options) {
-            this.name = options.name || '1';
-            console.log(this);
-            if (!(this instanceof Worker)) {
-                console.log('new worker');
-                return new Worker(options);
-            }
-            console.log('call qy');
-            qy.call(this);
-        }
-        Object.setPrototypeOf(Worker.prototype, qy.prototype);
-        Object.setPrototypeOf(Worker, qy);
-        Worker.prototype.send = function () {
-            console.log('Worker send');
-        };
-
-        function qy() {
-            return {
-                name: 'qy'
-            };
-        }
-        Worker.prototype.copy = function () {
-            console.log('qy copy');
-        };
-        const w = new Worker({
-            name: '2',
-        })
-    }
-    //apply实现
+       })
+   }
     
 </script>
