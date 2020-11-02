@@ -1,0 +1,585 @@
+.btn {
+    // 变量
+    --hue: 190;
+    --ease-in-duration: .25s;
+    --ease-in-exponential: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    --ease-out-duration: .65s;
+    --ease-out-delay: var(--ease-in-duration);
+    --ease-out-exponential: cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    text-decoration: none;
+    background-color: hsl(var(--hue), 100%, 41%);
+    border: 1px solid hsl(var(--hue), 100%, 41%);
+    outline: transparent;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: 0.25s;
+
+    &:hover {
+        background: hsl(var(--hue), 100%, 31%);
+    }
+
+    &-primary {
+        --hue: 171;
+    }
+
+    &-ghost {
+        color: hsl(var(--hue), 100%, 41%);
+        background-color: transparent;
+        border-color: hsl(var(--hue), 100%, 41%);
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    /* 边框动画 */
+    &-border-stroke {
+        border-color: hsla(var(--hue), 100%, 41%, 0.35);
+
+        .btn-borders {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            .border-top {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 1px;
+                background: hsl(var(--hue), 100%, 41%);
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            .border-right {
+                position: absolute;
+                right: 0;
+                width: 1px;
+                height: 100%;
+                background: hsl(var(--hue), 100%, 41%);
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+
+            .border-bottom {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background: hsl(var(--hue), 100%, 41%);
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+
+            .border-left {
+                position: absolute;
+                left: 0;
+                width: 1px;
+                height: 100%;
+                background: hsl(var(--hue), 100%, 41%);
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+
+            // when unhover, ease-out left, bottom; ease-in right, top
+
+            .border-left {
+                transition: var(--ease-out-duration) var(--ease-out-delay) var(--ease-out-exponential);
+            }
+
+            .border-bottom {
+                transition: var(--ease-out-duration) var(--ease-out-delay) var(--ease-out-exponential);
+            }
+
+            .border-right {
+                transition: var(--ease-in-duration) var(--ease-in-exponential);
+            }
+
+            .border-top {
+                transition: var(--ease-in-duration) var(--ease-in-exponential);
+            }
+        }
+
+        &:hover {
+            color: hsl(var(--hue), 100%, 41%);
+            background: transparent;
+
+            .border-top,
+            .border-bottom {
+                transform: scaleX(1);
+            }
+
+            .border-left,
+            .border-right {
+                transform: scaleY(1);
+            }
+
+            // when hover, ease-in left, bottom; ease-out right, top
+
+            .border-left {
+                transition: var(--ease-in-duration) var(--ease-in-exponential);
+            }
+
+            .border-bottom {
+                transition: var(--ease-in-duration) var(--ease-in-exponential);
+            }
+
+            .border-right {
+                transition: var(--ease-out-duration) var(--ease-out-delay) var(--ease-out-exponential);
+            }
+
+            .border-top {
+                transition: var(--ease-out-duration) var(--ease-out-delay) var(--ease-out-exponential);
+            }
+        }
+    }
+
+    &-text-float-up {
+        &::after {
+            position: absolute;
+            content: attr(data-text);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(35%);
+            transition: 0.25s ease-out;
+        }
+
+        // when hover, ease-in top-text; ease-out bottom-text
+
+        .btn-text {
+            display: block;
+            transition: 0.75s 0.1s var(--ease-out-exponential);
+        }
+
+        &:hover {
+            // when hover, ease-in bottom-text; ease-out top-text
+
+            .btn-text {
+                opacity: 0;
+                transform: translateY(-25%);
+                transition: 0.25s ease-out;
+            }
+
+            &::after {
+                opacity: 1;
+                transform: translateY(0);
+                transition: 0.75s 0.1s var(--ease-out-exponential);
+            }
+        }
+    }
+
+    &-shine {
+        color: white;
+
+        &::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    hsla(var(--hue), 100%, 41%, 0.5),
+                    transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        &:hover {
+            background: transparent;
+            box-shadow: 0 0 20px 10px hsla(var(--hue), 100%, 41%, 0.5);
+        }
+
+        &:hover::before {
+            transform: translateX(100%);
+        }
+    }
+}
+
+body {
+    background: #222;
+}
+
+.slide-bar {
+    position: relative;
+    color: transparent;
+    animation: fill-text-white 2s 1.6s forwards;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #35b9f1;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: slide-in-out 2s cubic-bezier(0.75, 0, 0, 1) forwards;
+    }
+}
+
+@keyframes slide-in-out {
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    50.1% {
+        transform-origin: right;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+@keyframes fill-text-white {
+    to {
+        color: white;
+    }
+}
+
+header {
+
+    .title,
+    .subtitle {
+        width: 250px;
+        height: 30px;
+    }
+
+    .title {
+        margin: 0;
+        font-family: Lora, serif;
+        font-size: 32px;
+        line-height: 30px;
+
+        &::before {
+            background: #FF4081;
+        }
+    }
+
+    .subtitle {
+        margin: 10px 0 0 0;
+        font-family: Lato, sans-serif;
+        font-size: 12px;
+        line-height: 30px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        animation-delay: 3.2s;
+
+        &::before {
+            background: #03A9F4;
+            animation-delay: 2s;
+        }
+    }
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 75px 10px 30px;
+    background: #162740;
+    border: transparent;
+
+    .todo-list__title {
+        padding: 3px 6px;
+        color: #f1faee;
+        background-color: #264456;
+    }
+
+    .todo-list__label {
+        display: flex;
+        align-items: center;
+        margin: 40px 0;
+        font-size: 24px;
+        font-family: Lato, sans-serif;
+        color: #f1faee;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            opacity: 0;
+            appearance: none;
+
+            &+.check {
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                border: 2px solid #f1faee;
+                transition: 0.2s;
+            }
+
+            &:checked+.check {
+                width: 25px;
+                height: 15px;
+                border-top: transparent;
+                border-right: transparent;
+                transform: rotate(-45deg);
+            }
+
+            &~span {
+                position: relative;
+                left: 40px;
+                white-space: nowrap;
+                transition: 0.5s;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    top: 50%;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: #f1faee;
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    transition: transform 0.5s;
+                }
+            }
+
+            &:checked~span {
+                color: #585b57;
+
+                &::before {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                }
+            }
+        }
+    }
+
+}
+
+.frame {
+    --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    -webkit-box-reflect: below 0 linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+
+    .horizontal-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: white;
+            transform: scaleX(0);
+            animation: scale-x-in 1s forwards var(--ease-in-out-cubic);
+
+            &:nth-child(1) {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                bottom: 0;
+            }
+        }
+    }
+
+    .vertical-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .line {
+            position: absolute;
+            width: 1px;
+            height: 50%;
+            background: white;
+
+            &:nth-child(odd) {
+                top: -50%;
+                animation: slide-down 0.6s 0.8s forwards var(--ease-in-out-cubic);
+            }
+
+            &:nth-child(even) {
+                bottom: -50%;
+                animation: slide-up 0.6s 0.8s forwards var(--ease-in-out-cubic);
+            }
+
+            &:nth-child(n+3) {
+                right: 0;
+            }
+        }
+    }
+
+    .blingbling {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, var(--primary-color), transparent);
+        filter: blur(4px);
+        transform: translateX(-101%);
+        animation: slide-right 0.6s 1.5s forwards;
+    }
+}
+
+.staggered-flip-in {
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    padding: 12px 24px;
+    color: white;
+    font-size: 32px;
+    line-height: 1;
+    white-space: pre;
+    overflow: hidden;
+
+    span {
+        padding: 8px;
+        opacity: 0;
+        transform: rotateY(90deg);
+        animation: flip-in 0.6s forwards var(--ease-in-out-cubic), fade-in 0.6s forwards var(--ease-in-out-cubic);
+    }
+}
+
+@keyframes flip-in {
+    to {
+        transform: rotateY(0);
+    }
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scale-x-in {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes slide-up {
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slide-down {
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slide-right {
+    to {
+        transform: translateX(101%);
+    }
+}
+:root {
+    --primary-color: hsl(196, 78%, 61%);
+    --secondary-color: hsl(217, 15%, 83%);
+    --success-color: hsl(165, 58%, 55%);
+    --info-color: hsl(214, 79%, 65%);
+    --warning-color: hsl(43, 100%, 66%);
+    --danger-color: hsl(354, 81%, 63%);
+    --primary-color-darker: hsl(196, 68%, 54%);
+    --secondary-color-darker: hsl(215, 13%, 70%);
+    --success-color-darker: hsl(165, 55%, 48%);
+    --info-color-darker: hsl(214, 68%, 58%);
+    --warning-color-darker: hsl(39, 97%, 62%);
+    --danger-color-darker: hsl(354, 67%, 56%);
+    --primary-color-lighter: hsl(196, 78%, 81%);
+    --secondary-color-lighter: hsl(214, 16%, 92%);
+    --success-color-lighter: hsl(165, 58%, 75%);
+    --info-color-lighter: hsl(214, 79%, 85%);
+    --warning-color-lighter: hsl(43, 100%, 86%);
+    --danger-color-lighter: hsl(354, 81%, 83%);
+    --secondary-color-darkest: hsl(215, 11%, 30%);
+    --secondary-color-lightest: hsl(220, 1%, 98%);
+}
+.loader {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 800;
+    height: 50px;
+    width: 50px;
+    .arc {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border-bottom: 3px solid var(--primary-color);
+
+        @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+                animation: rotate#{$i} 1.15s linear infinite;
+            }
+        }
+
+        &:nth-child(1) {
+            animation-delay: -0.8s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -0.4s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0s;
+        }
+    }
+}
+
+@keyframes rotate1 {
+    from {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(0);
+    }
+
+    to {
+        transform: rotateX(35deg) rotateY(-45deg) rotateZ(1turn);
+    }
+}
+
+@keyframes rotate2 {
+    from {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(0);
+    }
+
+    to {
+        transform: rotateX(50deg) rotateY(10deg) rotateZ(1turn);
+    }
+}
+
+@keyframes rotate3 {
+    from {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(0);
+    }
+
+    to {
+        transform: rotateX(35deg) rotateY(55deg) rotateZ(1turn);
+    }
+}

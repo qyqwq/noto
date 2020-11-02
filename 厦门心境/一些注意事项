@@ -1,0 +1,4 @@
+
+
+//人名带空格时
+v-html="formatName(scope.row.incomeName)"
