@@ -70,7 +70,7 @@ export default {
       var success_action = ()=> {
         this.$message({
           type: 'success',
-          message: this.lang.zzcg
+          message: '操作成功'
         })
         this.dia_show = false
         this.getList()
@@ -103,7 +103,49 @@ export default {
           }
         }
       })
-    }//action
+    },//action
+    aaaaa(){
+      var m = this.$t('submitButton.msg')
+      //成功动作
+      var success_action = ()=> {
+        this.$message({
+          type: 'success',
+          message: this.$t('submitButton.czcg')
+        })
+        this.dia_show = false
+        this.getList()
+      }
+      this.$confirm(m, this.$t('submitButton.ts'), {
+        confirmButtonText: this.$t('submitButton.qd'),
+        cancelButtonText: this.$t('submitButton.qx'),
+        type: 'warning',
+        beforeClose: (action, instance, done) => {
+          var a = () => {
+            instance.confirmButtonLoading = false
+            instance.confirmButtonText = this.$t('submitButton.qd')
+          }
+          if (action === 'confirm') {
+            instance.confirmButtonLoading = true
+            instance.confirmButtonText = this.$t('submitButton.tjz')
+            this.$api.form('/apiEnterprise/etp/salary/transfer/moneysend', {
+              id: data.id
+            })
+              .then((res) => {
+                success_action()
+                a()
+                done()
+              })
+              .catch(() => {
+                a()
+              })
+          } else {
+            done()
+          }
+        }
+      })//action
+
+
+    }
   }
 }
 </script>>

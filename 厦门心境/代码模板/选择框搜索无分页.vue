@@ -43,7 +43,7 @@ export default {
       // 还原备份
       this.netList = this.netList_cache;
     },
-    // 获取网点列表
+    // 列表
     getnetList_cache(query) {
       var p = Object.assign(this.netParams, query);
       this.loading = true;
@@ -53,18 +53,18 @@ export default {
         this.loading = false;
       });
     },
-    // 网点搜索
+    // 搜索
     netSearch(query) {
       if (query) {
         this.netList = this.netList_cache.filter((e) => {
           const s = e.name + "/" + e.id;
-          return !s.indexOf(query);
+          return s.indexOf(query) >= 0;
         });
       } else {
         this.netList = this.netList_cache;
       }
     },
-    // 网点失去焦点
+    // 失去焦点
     netVisibleChange() {
       this.netList = this.netList_cache;
     },

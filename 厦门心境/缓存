@@ -17,7 +17,29 @@ chy1415926
 
 QY27
 wuyifan
-12345678
+wuyifan12345678
+
+QY20
+150
+wlj123
+wlj12345678
+
+可以转账的企业
+QY122
+航航行航航
+
+
+QY100006
+poi386422143
+xurong123
+
+测试服企业
+QY32
+yongchung
+yongchung12345678
+
+开户企业
+105976 9271590756
 
   .no-warp{
     overflow: hidden;
@@ -25,10 +47,80 @@ wuyifan
     white-space: nowrap;
   }
 
-
+比索  ₱
 
     <guide-button-list />
 import GuideButtonList from './GuideButtonList'
   components: {
     GuideButtonList
   },
+
+  测试账号
+合作商id: HZS000002         账号： GLY000002       密码： ljt123456&&
+手机 ：  15750602199
+谷歌key:    THXUNHO4BPFJQDDEMOVSVNZA2JXDUTCF
+
+渠道商id： QDS100002
+账号： yh123456    
+密码： 123456
+密钥： OT5sMG2YWQOPNVEXEANLAZSNAFUM7TLJY
+
+今天---
+  企业
+  商户
+  合作商设置
+
+操作日志
+
+80 - 82
+
+禅道账户 chenqi chy1415926
+
+企业
+  一审二审
+  银行卡修改
+  
+
+
+{
+ "kpiTime": 202102,
+ "objType": 2,
+ "objTypeId": 161,
+ "kpiInfoList": [
+  {
+    "kpiTypeId": 1,
+   "settlementCurrencyType": 1,
+   "settlementMethodType": 3,
+   "kpiInfoAssessmentList": [
+    {
+     "assessmentEnd": 29,
+     "assessmentStart": 0,
+     "gradeType": 1,
+     "settlementStandard": 10
+    },{
+     "assessmentEnd": 59,
+     "assessmentStart": 30,
+     "gradeType": 2,
+     "settlementStandard": 20
+    }
+   ]   
+  },{
+    "kpiTypeId": 1,
+   "settlementCurrencyType": 1,
+   "settlementMethodType": 4,
+   "kpiInfoAssessmentList": [
+    {
+     "assessmentEnd": 29,
+     "assessmentStart": 0,
+     "gradeType": 1,
+     "settlementStandard": 10
+    },{
+     "assessmentEnd": 69,
+     "assessmentStart": 30,
+     "gradeType": 2,
+     "settlementStandard": 20
+    }
+   ]    
+  }
+ ] 
+}

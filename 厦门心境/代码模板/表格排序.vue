@@ -19,3 +19,15 @@
       }
       this.getList()
     },
+
+    tableSearch({ column, prop, order }) {
+      // order 值: ascending descending
+      this.params.sortname = ''
+      this.params.sortvalue = ''
+      if (order) {
+        var a = order === 'ascending' ? 'asc' : 'desc'
+        this.params.sortname = prop
+        this.params.sortvalue = a
+      }
+      this.getList()
+    },

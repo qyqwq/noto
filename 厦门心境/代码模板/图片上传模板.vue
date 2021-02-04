@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { upload } from '@/api/new/system'
 export default {
   data: function () {
     return {
