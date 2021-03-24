@@ -19,6 +19,10 @@
       })
       this.currencys = c
     })
+    // 物业类型
+    this.$store.dispatch('api/propertyType').then(res => {
+      this.propertyType = res.list
+    })
     
 </script>
 
