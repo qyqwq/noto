@@ -2,6 +2,23 @@
   <div>
     <!-- 查询 -->
     <el-form :inline="true" class="filter-container">
+      <el-form-item label="">
+        <el-select
+            v-model="listQuery.status"
+            size="mini"
+            class="table-select"
+            clearable
+            placeholder="状态"
+            @change="search"
+          >
+            <el-option
+              v-for="(i,k) in status"
+              :key="k"
+              :label="i.name"
+              :value="k"
+            />
+          </el-select>
+      </el-form-item>
       <el-form-item>
         <router-link to="/merchant/mdAdd">
           <el-button
@@ -98,6 +115,12 @@
           <el-tag v-show="scope.row.statusId == 1" type="danger" effect="dark">拒绝</el-tag>
           <el-tag v-show="scope.row.statusId == 0" type="success" effect="dark">通过</el-tag>
         </template>
+
+        <template slot-scope="{row:{orderStatus}}">
+          <div v-for="(s,key) in status" v-show="key == orderStatus" :key="key" :class="s.type">
+            {{ s.name }}
+          </div>
+        </template>
       </el-table-column>
 
       <!-- 城市 -->
@@ -171,7 +194,20 @@ export default {
       listQuery: {
 
       },
-
+      status: {
+        1: {
+          name: '正常',
+          type: 'success'
+        },
+        6: {
+          name: '待审',
+          type: 'warning'
+        },
+        7: {
+          name: '拒绝',
+          type: 'danger'
+        }
+      },
       // 表格数据部分
       listLoading: false, // 表格加载提示
       list: [],
@@ -227,6 +263,8 @@ export default {
       //   .catch(() => {
       //     this.listLoading = false
       //   })
+        // 图片预览接口重新加载
+        this.$previewRefresh()
     },
 
     // 排序
@@ -243,6 +281,9 @@ export default {
     search(name) {
       // 表头点击搜索
       if (name === 'content') {
+        var [startTime, endTime] = this.time || []
+        this.listQuery.startTime = startTime
+        this.listQuery.endTime = endTime
         this.params = { ...this.params, ...this.listQuery }
       }
       this.params.page = 1
@@ -302,5 +343,23 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.info{
+  color: #909399;
+}
+.success{
+  color:#67C23A;
+}
+.danger{
+  color: #F56C6C;
+}
+.close{
+  color:rgb(16, 16, 16)
+}
+.warning{
+  color: #E6A23C;
+}
+.primary{
+  color:#409EFF;
 }
 </style>

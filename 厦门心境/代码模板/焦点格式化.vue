@@ -22,13 +22,13 @@ export default {
   },
   methods:{
     // 金额失去焦点
-    moneyBlur(object, name, num) {
+    moneyBlur(object, name, num = 2) {
       object[name] = this.formatMoney(object[name], num)
     },
     // 金额焦点
     moneyFocus(object, name) {
       object[name] = (object[name] + '').replace(/,/g, '')
-    }
+    },
   }
 }
 </script>
