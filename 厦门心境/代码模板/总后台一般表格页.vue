@@ -147,13 +147,13 @@
           <el-button
             type=""
             size="small"
-            @click="detailMerch(row.id)"
+            @click="detail(row.id)"
           >详情</el-button>
           <!-- 编辑 -->
           <el-button
             type="primary"
             size="small"
-            @click="editMerch(row.id)"
+            @click="edit(row.id)"
           >修改</el-button>
 
         </template>
@@ -180,7 +180,6 @@ import { mapGetters } from 'vuex'
 import { getLastMonth } from '@/utils/util'
 
 export default {
-  name: 'MerchList',
   components: { },
   data: function() {
     return {
@@ -250,7 +249,7 @@ export default {
           p[key] = e
         }
       }
-      this.listLoading = true
+      // this.listLoading = true
       // this.$api
       //   .form('/api/sys/mer/info/list', p)
       //   .then((res) => {
@@ -296,7 +295,7 @@ export default {
     },
 
     // 编辑
-    editMerch(id) {
+    edit(id) {
       // console.log(id);
     },
 
@@ -319,7 +318,7 @@ export default {
     },
 
     // 详情
-    detailMerch(id) {
+    detail(id) {
 
     },
     // 表格方法
