@@ -233,6 +233,9 @@ export default {
   watch: {
   },
   mounted() {
+    if (this.$route.query.id) {
+      this.detail({ id: this.$route.query.id })
+    }
     this.getList()
   },
   activated() {
