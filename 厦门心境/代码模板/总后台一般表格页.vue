@@ -346,6 +346,11 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.black-button{
+  background: black;
+  border-color: black;
+  color: white;
+}
 .info{
   color: #909399;
 }

@@ -1,11 +1,11 @@
 <template>
   <el-autocomplete
     v-model="rowData.payBank"
-    :fetch-suggestions="bankSearch"
+    :fetch-suggestions="autocompleteSearch"
     placeholder="请输入内容"
     :maxlength="20"
     style="width:100%"
-    @select="bankSelect"
+    @select="autocompleteSelect"
   >
     <template slot-scope="{ item }">
       {{ `${item.name} / ${item.egName}` }}
@@ -35,7 +35,7 @@ export default {
       })
     },
     // 银行搜索
-    bankSearch(query, cb) {
+    autocompleteSearch(query, cb) {
       cb([])
       if (query) {
         cb(this.bankList.filter((e) => {
@@ -47,7 +47,7 @@ export default {
       }
     },
     // 银行输入建议选择
-    bankSelect(item) {
+    autocompleteSelect(item) {
       this.rowData.payBank = item.name + ' / ' + item.egName
     },
   },
